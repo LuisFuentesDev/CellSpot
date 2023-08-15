@@ -10,6 +10,7 @@
         android:id="@+id/rvPhoneList"
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:background="@color/dark_primary_color"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
