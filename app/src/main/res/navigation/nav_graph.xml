@@ -9,5 +9,18 @@
         android:id="@+id/phoneList"
         android:name="com.example.phonenew.vista.PhoneList"
         android:label="fragment_phone_list"
-        tools:layout="@layout/fragment_phone_list" />
+        tools:layout="@layout/fragment_phone_list" >
+        <action
+            android:id="@+id/action_phoneList_to_phoneDetails"
+            app:destination="@id/phoneDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/phoneDetails"
+        android:name="com.example.phonenew.vista.PhoneDetails"
+        android:label="fragment_phone_details"
+        tools:layout="@layout/fragment_phone_details" >
+        <action
+            android:id="@+id/action_phoneDetails_to_phoneList"
+            app:destination="@id/phoneList" />
+    </fragment>
 </navigation>
