@@ -50,7 +50,7 @@ class AdapterPhone : RecyclerView.Adapter<AdapterPhone.ItemPhoneViewHolder>() {
             phoneVista.textViewName.text = phone.name
             phoneVista.textViewPrice.text = phone.price.toString()
 
-            phoneVista.cardViewPhone.setOnClickListener {
+            phoneVista.cardViewImage.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putString("id", phone.id)
                 Navigation.findNavController(phoneVista.root)
