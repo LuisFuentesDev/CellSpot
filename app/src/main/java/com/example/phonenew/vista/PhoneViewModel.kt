@@ -19,7 +19,7 @@ class PhoneViewModel(application: Application) : AndroidViewModel(application) {
         repository = Repository(phoneApi, phoneDataBase)
 
     }
-    fun getAllPhone() = viewModelScope.launch {
+    fun getAllPhones() = viewModelScope.launch {
         repository.getPhones()
     }
 }
