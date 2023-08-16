@@ -1,12 +1,10 @@
 package com.example.phonenew.data.local
 
-import android.telecom.Call.Details
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.phonenew.vista.PhoneDetails
 
 @Dao
 interface PhoneDao {
@@ -17,7 +15,7 @@ interface PhoneDao {
     fun getPhone(): LiveData<List<PhoneEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertPhoneDetails(phoneDetailsEntity: PhoneDetailsEntity)
+    suspend fun insertPhoneDetails(phoneDetailsEntity: List<PhoneDetailsEntity>)
 
     @Query("SELECT * FROM details_phones_table where id= :id")
     fun getPhoneDetails(id:String): LiveData<List<PhoneDetailsEntity>>

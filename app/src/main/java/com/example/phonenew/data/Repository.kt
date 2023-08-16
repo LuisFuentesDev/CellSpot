@@ -11,7 +11,8 @@ class Repository(private val phoneApi: PhoneApi, private val phoneDao: PhoneDao)
 
     fun getPhoneEntity(): LiveData<List<PhoneEntity>> = phoneDao.getPhone()
 
-    fun getPhoneDetais(id: String): LiveData<List<PhoneDetailsEntity>> = phoneDao.getPhoneDetails(id)
+    fun getPhoneDetailsEntity(id: String): LiveData<List<PhoneDetailsEntity>> =
+        phoneDao.getPhoneDetails(id)
 
     suspend fun getPhones() {
         val response = phoneApi.getData()
@@ -23,6 +24,30 @@ class Repository(private val phoneApi: PhoneApi, private val phoneDao: PhoneDao)
                 }
                 phoneDao.insertPhone(phoneEntityList)
             }
+        } else {
+            Log.e("repositorio", response.errorBody().toString())
+        }
+    }
+
+    suspend fun getPhoneDetails(id: String) {
+        val response = phoneApi.getDetailsData(id)
+        if (response.isSuccessful) {
+            val resp = response.body()
+            resp?.let { phoneDetailsList ->
+                val phoneDetailsEntity = phoneDetailsList.map { phoneDetails ->
+                    PhoneDetailsEntity(
+                        phoneDetails.id,
+                        phoneDetails.name,
+                        phoneDetails.price,
+                        phoneDetails.image,
+                        phoneDetails.description,
+                        phoneDetails.lastPrice,
+                        phoneDetails.credit
+                    )
+                }
+                phoneDao.insertPhoneDetails(phoneDetailsEntity)
+            }
+
         } else {
             Log.e("repositorio", response.errorBody().toString())
         }
