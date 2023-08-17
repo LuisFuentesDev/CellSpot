@@ -13,6 +13,8 @@ class PhoneViewModel(application: Application) : AndroidViewModel(application) {
 
     fun phoneLiveData() = repository.getPhoneEntity()
 
+    fun detailsLiveData(id:String) = repository.getPhoneDetailsEntity(id)
+
     init {
         val phoneApi = PhoneRetrofit.getPhoneRetrofit()
         val phoneDataBase = PhoneDataBase.getDataBase(application).getPhoneDao()
@@ -21,5 +23,8 @@ class PhoneViewModel(application: Application) : AndroidViewModel(application) {
     }
     fun getAllPhones() = viewModelScope.launch {
         repository.getPhones()
+    }
+    fun getDetailsVM(id:String)=viewModelScope.launch {
+        repository.getPhoneDetails(id)
     }
 }
