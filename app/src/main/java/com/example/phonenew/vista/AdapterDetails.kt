@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.phonenew.data.local.PhoneDetailsEntity
-import com.example.phonenew.databinding.ItemDetailsBinding
+import com.example.phonenew.databinding.FragmentPhoneDetailsBinding
 
 class AdapterDetails : RecyclerView.Adapter<AdapterDetails.ItemDetailsViewHolder>() {
 
-    lateinit var binding: ItemDetailsBinding
+    lateinit var binding: FragmentPhoneDetailsBinding
     private val listDetailsPhones = mutableListOf<PhoneDetailsEntity>()
 
     override fun onCreateViewHolder(
@@ -18,7 +18,7 @@ class AdapterDetails : RecyclerView.Adapter<AdapterDetails.ItemDetailsViewHolder
 
     ): AdapterDetails.ItemDetailsViewHolder {
 
-        binding = ItemDetailsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = FragmentPhoneDetailsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return ItemDetailsViewHolder(binding)
     }
@@ -32,14 +32,14 @@ class AdapterDetails : RecyclerView.Adapter<AdapterDetails.ItemDetailsViewHolder
         holder.bind(phone)
     }
 
-    fun setDataDetails(phonesDetails: List<PhoneDetailsEntity>) {
+    fun setDataDetails(phoneDetailsEntity: PhoneDetailsEntity) {
         this.listDetailsPhones.clear()
-        this.listDetailsPhones.addAll(phonesDetails)
+        this.listDetailsPhones.addAll(listOf(phoneDetailsEntity))
         notifyDataSetChanged()
 
     }
 
-    class ItemDetailsViewHolder(val phoneDetailsVista: ItemDetailsBinding) :
+    class ItemDetailsViewHolder(val phoneDetailsVista: FragmentPhoneDetailsBinding) :
         RecyclerView.ViewHolder(phoneDetailsVista.root) {
         fun bind(phoneDetails: PhoneDetailsEntity) {
             phoneDetailsVista.imageViewDetails.load(phoneDetails.image)

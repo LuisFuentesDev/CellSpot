@@ -17,6 +17,6 @@ interface PhoneDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPhoneDetails(phoneDetailsEntity: List<PhoneDetailsEntity>)
 
-    @Query("SELECT * FROM details_phones_table where id= :id")
-    fun getPhoneDetails(id:String): LiveData<List<PhoneDetailsEntity>>
+    @Query("SELECT * FROM details_phones_table where id = :id")
+    fun getPhoneDetails(id: Int): LiveData<List<PhoneDetailsEntity>>
 }

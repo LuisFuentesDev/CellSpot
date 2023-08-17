@@ -1,7 +1,7 @@
 package com.example.phonenew.data.remote
 
-data class PhoneDetails(
-    val id: String,
+data class DataPhoneDetails(
+    val id: Int,
     val name: String,
     val price: Int,
     val image: String,

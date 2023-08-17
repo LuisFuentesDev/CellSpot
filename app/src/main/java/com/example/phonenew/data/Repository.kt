@@ -11,7 +11,7 @@ class Repository(private val phoneApi: PhoneApi, private val phoneDao: PhoneDao)
 
     fun getPhoneEntity(): LiveData<List<PhoneEntity>> = phoneDao.getPhone()
 
-    fun getPhoneDetailsEntity(id: String): LiveData<List<PhoneDetailsEntity>> =
+    fun getPhoneDetailsEntity(id: Int): LiveData<List<PhoneDetailsEntity>> =
         phoneDao.getPhoneDetails(id)
 
     suspend fun getPhones() {
@@ -29,7 +29,7 @@ class Repository(private val phoneApi: PhoneApi, private val phoneDao: PhoneDao)
         }
     }
 
-    suspend fun getPhoneDetails(id: String) {
+    suspend fun getPhoneDetails(id: Int) {
         val response = phoneApi.getDetailsData(id)
         if (response.isSuccessful) {
             val resp = response.body()

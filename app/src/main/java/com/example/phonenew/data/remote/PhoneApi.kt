@@ -7,6 +7,6 @@ interface PhoneApi {
     @GET("products")
     suspend fun getData(): Response<List<DataPhone>>
 
-    @GET("details")
-    suspend fun getDetailsData(id:String): Response<List<PhoneDetails>>
+    @GET("details{id}")
+    suspend fun getDetailsData(id:Int): Response<List<DataPhoneDetails>>
 }

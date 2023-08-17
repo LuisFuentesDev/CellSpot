@@ -52,7 +52,7 @@ class AdapterPhone : RecyclerView.Adapter<AdapterPhone.ItemPhoneViewHolder>() {
 
             phoneVista.cardViewImage.setOnClickListener {
                 val bundle = Bundle()
-                bundle.putString("id", phone.id)
+                bundle.putInt("id", phone.id)
                 Navigation.findNavController(phoneVista.root)
                     .navigate(R.id.action_phoneList_to_phoneDetails, bundle)
 
