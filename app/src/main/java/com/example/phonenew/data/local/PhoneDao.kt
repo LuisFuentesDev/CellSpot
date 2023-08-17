@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.phonenew.data.remote.DataPhoneDetails
 
 @Dao
 interface PhoneDao {
@@ -15,8 +16,8 @@ interface PhoneDao {
     fun getPhone(): LiveData<List<PhoneEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertPhoneDetails(phoneDetailsEntity: List<PhoneDetailsEntity>)
+    suspend fun insertPhoneDetails(phoneDetailsEntity: PhoneDetailsEntity)
 
     @Query("SELECT * FROM details_phones_table where id = :id")
-    fun getPhoneDetails(id: Int): LiveData<List<PhoneDetailsEntity>>
+    fun getPhoneDetails(id: Int): LiveData<PhoneDetailsEntity>
 }

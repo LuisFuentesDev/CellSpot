@@ -11,45 +11,42 @@ class Repository(private val phoneApi: PhoneApi, private val phoneDao: PhoneDao)
 
     fun getPhoneEntity(): LiveData<List<PhoneEntity>> = phoneDao.getPhone()
 
-    fun getPhoneDetailsEntity(id: Int): LiveData<List<PhoneDetailsEntity>> =
+    fun getPhoneDetailsEntity(id: Int): LiveData<PhoneDetailsEntity> =
         phoneDao.getPhoneDetails(id)
 
     suspend fun getPhones() {
-        val response = phoneApi.getData()
-        if (response.isSuccessful) {
-            val resp = response.body()
-            resp?.let { phoneList ->
-                val phoneEntityList = phoneList.map { phone ->
-                    PhoneEntity(phone.id, phone.name, phone.price, phone.image)
+        try {
+            val response = phoneApi.getData()
+            if (response.isSuccessful) {
+                val phoneList = response.body()
+                phoneList?.let {
+                    val phoneEntityList = it.map { phone ->
+                        PhoneEntity(phone.id, phone.name, phone.price, phone.image)
+                    }
+                    phoneDao.insertPhone(phoneEntityList)
                 }
-                phoneDao.insertPhone(phoneEntityList)
+            } else {
+                Log.e("Repository", response.errorBody().toString())
             }
-        } else {
-            Log.e("repositorio", response.errorBody().toString())
+        } catch (e: Exception) {
+            Log.e("Repository", "Error getting phones: ${e.message}")
         }
     }
 
-    suspend fun getPhoneDetails(id: Int) {
-        val response = phoneApi.getDetailsData(id)
-        if (response.isSuccessful) {
-            val resp = response.body()
-            resp?.let { phoneDetailsList ->
-                val phoneDetailsEntity = phoneDetailsList.map { phoneDetails ->
-                    PhoneDetailsEntity(
-                        phoneDetails.id,
-                        phoneDetails.name,
-                        phoneDetails.price,
-                        phoneDetails.image,
-                        phoneDetails.description,
-                        phoneDetails.lastPrice,
-                        phoneDetails.credit
-                    )
+   suspend fun getPhoneDetails(id: Int) {
+        try {
+            val response = phoneApi.getDetailsData(id)
+            if (response.isSuccessful) {
+                val resp = response.body()
+                resp?.let {phoneDetails ->
+                    val phoneDetailsEntity = phoneDetails
+                   // phoneDao.insertPhoneDetails(phoneDetailsEntity)
                 }
-                phoneDao.insertPhoneDetails(phoneDetailsEntity)
+            } else {
+                Log.e("Repository", response.errorBody().toString())
             }
-
-        } else {
-            Log.e("repositorio", response.errorBody().toString())
+        } catch (e: Exception) {
+            Log.e("Repository", "Error getting phone details: ${e.message}")
         }
     }
 }
