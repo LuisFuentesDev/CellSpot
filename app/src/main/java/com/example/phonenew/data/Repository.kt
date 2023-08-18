@@ -44,7 +44,7 @@ class Repository(private val phoneApi: PhoneApi, private val phoneDao: PhoneDao)
                 Log.e("Repository", response.errorBody().toString())
             }
         } catch (e: Exception) {
-            Log.e("Repository", "Error getting phones: ${e.message}")
+            Log.e("Repository", "Error getting phone: ${e.message}")
         }
     }
 }

@@ -15,6 +15,7 @@ class AdapterPhone : RecyclerView.Adapter<AdapterPhone.ItemPhoneViewHolder>() {
     lateinit var binding: ItemPhoneBinding
     private val listItemPhones = mutableListOf<PhoneEntity>()
 
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
