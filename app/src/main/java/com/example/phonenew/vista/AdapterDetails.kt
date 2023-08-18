@@ -49,7 +49,6 @@ class AdapterDetails : RecyclerView.Adapter<AdapterDetails.ItemDetailsViewHolder
             phoneDetailsVista.textViewCredit.text = phoneDetails.credit.toString()
         }
     }
-
 }
 
 

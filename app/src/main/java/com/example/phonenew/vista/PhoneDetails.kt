@@ -22,7 +22,6 @@ class PhoneDetails() : Fragment(), Parcelable {
         param1 = parcel.readInt()
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -58,8 +57,15 @@ class PhoneDetails() : Fragment(), Parcelable {
             if (it != null) {
                 binding.imageViewDetails.load(it.image)
                 binding.textViewNameDetails.text = it.name
+                binding.textViewDescription.text = it.description
+                binding.textViewCredit.text = it.credit.toString()
+                binding.textViewPriceDetails.text = it.price.toString()
+                if (!it.credit) {
+                    binding.textViewCredit.text = "Efectivo"
+                } else {
+                    binding.textViewCredit.text = "Crédito"
+                }
             }
-
         }
         return binding.root
     }

@@ -23,18 +23,10 @@ class PhoneViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun getAllPhones() = viewModelScope.launch {
-        try {
-            repository.getPhones()
-        } catch (e: Exception) {
+        repository.getPhones()
 
-        }
     }
-
     fun getDetailsVM(id: Int) = viewModelScope.launch {
-        try {
-            repository.getPhoneDetails(id)
-        } catch (e: Exception) {
-
-        }
+        repository.getPhoneDetails(id)
     }
 }

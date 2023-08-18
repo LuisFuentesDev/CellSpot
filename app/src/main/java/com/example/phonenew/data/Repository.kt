@@ -20,10 +20,8 @@ class Repository(private val phoneApi: PhoneApi, private val phoneDao: PhoneDao)
             if (response.isSuccessful) {
                 val phoneList = response.body()
                 phoneList?.let {
-                    val phoneEntityList = it.map { phone ->
-                        PhoneEntity(phone.id, phone.name, phone.price, phone.image)
-                    }
-                    phoneDao.insertPhone(phoneEntityList)
+                    val cellPhoneEntity = it.map { it.transformToEntity() }
+                    phoneDao.insertPhone(cellPhoneEntity)
                 }
             } else {
                 Log.e("Repository", response.errorBody().toString())
@@ -33,20 +31,20 @@ class Repository(private val phoneApi: PhoneApi, private val phoneDao: PhoneDao)
         }
     }
 
-   suspend fun getPhoneDetails(id: Int) {
+    suspend fun getPhoneDetails(id: Int) {
         try {
             val response = phoneApi.getDetailsData(id)
             if (response.isSuccessful) {
                 val resp = response.body()
-                resp?.let {phoneDetails ->
-                    val phoneDetailsEntity = phoneDetails
-                   // phoneDao.insertPhoneDetails(phoneDetailsEntity)
+                resp?.let {phoneDetails->
+                    val phoneDetailsEntity = phoneDetails.transformToDetailEntity()
+                    phoneDao.insertPhoneDetails(phoneDetailsEntity)
                 }
             } else {
                 Log.e("Repository", response.errorBody().toString())
             }
         } catch (e: Exception) {
-            Log.e("Repository", "Error getting phone details: ${e.message}")
+            Log.e("Repository", "Error getting phones: ${e.message}")
         }
     }
 }

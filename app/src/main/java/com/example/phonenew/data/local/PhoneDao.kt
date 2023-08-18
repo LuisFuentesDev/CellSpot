@@ -9,12 +9,14 @@ import com.example.phonenew.data.remote.DataPhoneDetails
 
 @Dao
 interface PhoneDao {
+    //Lista
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPhone(phoneEntity: List<PhoneEntity>)
 
     @Query("SELECT * FROM phone_table order by id asc")
     fun getPhone(): LiveData<List<PhoneEntity>>
 
+    //Detalle
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPhoneDetails(phoneDetailsEntity: PhoneDetailsEntity)
 
