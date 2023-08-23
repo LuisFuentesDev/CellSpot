@@ -13,9 +13,18 @@ https://my-json-server.typicode.com/Himuravidal/FakeAPIdata/
 - Room - Acceso a base de datos
 
 # Capturas de pantalla
-![Listado](https://i.postimg.cc/CnLhMzSm/1.png")
-
-![Detalle](https://i.postimg.cc/t7XCNmWW/2.png")
+<div style="display: flex;">
+  <div style="flex: 50%; padding: 5px;">
+    <a href="https://postimg.cc/K1ntgHtw" target="_blank">
+      <img src="https://i.postimg.cc/DwN6RV0v/1.png" alt="Captura 1" style="max-width: 100%;">
+    </a>
+  </div>
+  <div style="flex: 50%; padding: 5px;">
+    <a href="https://postimg.cc/t1kRK3HY" target="_blank">
+      <img src="https://i.postimg.cc/V6QSbgGB/2.png" alt="Captura 2" style="max-width: 100%;">
+    </a>
+  </div>
+</div>
 
 # Funcionamiento
 - La aplicación inicia en la pantalla con un listado de los distintos celulares a mostrar.
