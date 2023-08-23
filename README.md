@@ -6,25 +6,17 @@
 https://my-json-server.typicode.com/Himuravidal/FakeAPIdata/
 ```
 # Dependencias
-- Material Design - Utilidades de diseño
-- Retrofit - Consumo de API
-- Coil - Importar imágenes
-- Lifecycle - Respuesta segun ciclo de vida de los componentes
-- Room - Acceso a base de datos
+- Material Design - Lineamientos de diseño
+- Consumo de API (Retrofit)
+- Coil - Carga y muestra imágenes
+- Room - Persistencia de datos
+- MVVM
+
 
 # Capturas de pantalla
-<div style="display: flex;">
-  <div style="flex: 50%; padding: 5px;">
-    <a href="https://postimg.cc/K1ntgHtw" target="_blank">
-      <img src="https://i.postimg.cc/DwN6RV0v/1.png" alt="Captura 1" style="max-width: 100%;">
-    </a>
-  </div>
-  <div style="flex: 50%; padding: 5px;">
-    <a href="https://postimg.cc/t1kRK3HY" target="_blank">
-      <img src="https://i.postimg.cc/V6QSbgGB/2.png" alt="Captura 2" style="max-width: 100%;">
-    </a>
-  </div>
-</div>
+![lista](https://i.postimg.cc/DwN6RV0v/1.png)
+![detalle](https://i.postimg.cc/V6QSbgGB/2.png)
+
 
 # Funcionamiento
 - La aplicación inicia en la pantalla con un listado de los distintos celulares a mostrar.
