@@ -5,7 +5,7 @@
 ```bash
 https://my-json-server.typicode.com/Himuravidal/FakeAPIdata/
 ```
-# Implementaciones
+# Dependencias
 - Material Design - Utilidades de diseño
 - Retrofit - Consumo de API
 - Coil - Importar imágenes
