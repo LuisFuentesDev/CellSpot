@@ -17,5 +17,9 @@ https://my-json-server.typicode.com/Himuravidal/FakeAPIdata/
 
 ![Detalle](https://i.postimg.cc/t7XCNmWW/2.png")
 
+# Funcionamiento
+- La aplicación inicia en la pantalla con un listado de los distintos celulares a mostrar.
+- En la segunda pantalla se muestra el detalle del teléfono seleccionado.
+
 
 
